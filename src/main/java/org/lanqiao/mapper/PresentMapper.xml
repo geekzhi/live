@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.PresentMapper">
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Present">
+    <id column="ID" jdbcType="NUMBER" property="id" />
+    <result column="PRESENT_NAME" jdbcType="VARCHAR2" property="presentName" />
+    <result column="PRESENT_PRICE" jdbcType="NUMBER" property="presentPrice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PRESENT_NAME, PRESENT_PRICE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PRESENT
+    where ID = #{id,jdbcType=NUMBER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from PRESENT
+    where ID = #{id,jdbcType=NUMBER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Present">
+    insert into PRESENT (ID, PRESENT_NAME, PRESENT_PRICE
+      )
+    values (#{id,jdbcType=NUMBER}, #{presentName,jdbcType=VARCHAR2}, #{presentPrice,jdbcType=NUMBER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Present">
+    insert into PRESENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="presentName != null">
+        PRESENT_NAME,
+      </if>
+      <if test="presentPrice != null">
+        PRESENT_PRICE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=NUMBER},
+      </if>
+      <if test="presentName != null">
+        #{presentName,jdbcType=VARCHAR2},
+      </if>
+      <if test="presentPrice != null">
+        #{presentPrice,jdbcType=NUMBER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Present">
+    update PRESENT
+    <set>
+      <if test="presentName != null">
+        PRESENT_NAME = #{presentName,jdbcType=VARCHAR2},
+      </if>
+      <if test="presentPrice != null">
+        PRESENT_PRICE = #{presentPrice,jdbcType=NUMBER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=NUMBER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Present">
+    update PRESENT
+    set PRESENT_NAME = #{presentName,jdbcType=VARCHAR2},
+      PRESENT_PRICE = #{presentPrice,jdbcType=NUMBER}
+    where ID = #{id,jdbcType=NUMBER}
+  </update>
+</mapper>

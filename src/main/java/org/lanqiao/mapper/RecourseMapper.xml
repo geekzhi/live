@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.RecourseMapper">
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Recourse">
+    <id column="ID" jdbcType="NUMBER" property="id" />
+    <result column="USER_ID" jdbcType="NUMBER" property="userId" />
+    <result column="COURSE_ID" jdbcType="NUMBER" property="courseId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, USER_ID, COURSE_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from RECOURSE
+    where ID = #{id,jdbcType=NUMBER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from RECOURSE
+    where ID = #{id,jdbcType=NUMBER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Recourse">
+    insert into RECOURSE (ID, USER_ID, COURSE_ID
+      )
+    values (#{id,jdbcType=NUMBER}, #{userId,jdbcType=NUMBER}, #{courseId,jdbcType=NUMBER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Recourse">
+    insert into RECOURSE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="courseId != null">
+        COURSE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=NUMBER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=NUMBER},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=NUMBER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Recourse">
+    update RECOURSE
+    <set>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=NUMBER},
+      </if>
+      <if test="courseId != null">
+        COURSE_ID = #{courseId,jdbcType=NUMBER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=NUMBER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Recourse">
+    update RECOURSE
+    set USER_ID = #{userId,jdbcType=NUMBER},
+      COURSE_ID = #{courseId,jdbcType=NUMBER}
+    where ID = #{id,jdbcType=NUMBER}
+  </update>
+</mapper>

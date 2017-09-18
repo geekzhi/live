@@ -49,27 +49,65 @@
 			指定列的java数据类型
 			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
 		</table> -->
-		<!-- <table tableName="msg" domainObjectName="Msg"
+		<table tableName="TYPE" domainObjectName="Type"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
-			<property name="useActualColumnNames" value="true" />
-		</table> -->
-		<!--  
-		 <table tableName="classes" domainObjectName="Classes"
-			enableCountByExample="false" enableDeleteByExample="false"
-			enableSelectByExample="false" enableUpdateByExample="false">
-			<property name="useActualColumnNames" value="true" />
-		</table>-->
-		 <table tableName="user" domainObjectName="User"
-			enableCountByExample="false" enableDeleteByExample="false"
-			enableSelectByExample="false" enableUpdateByExample="false">
-			<property name="useActualColumnNames" value="true" />
+			<property name="useActualColumnNames" value="false" />
+			<columnOverride column="NAME" javaType="java.lang.String" jdbcType="VARCHAR2" />
+			<columnOverride column="ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
 		</table>
-		 <!--  <table tableName="teacher" domainObjectName="Teacher"
+		 
+		 <table tableName="USERS" domainObjectName="Users"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
-			<property name="useActualColumnNames" value="true" />
+			<property name="useActualColumnNames" value="false" />
+			<columnOverride column="USER_NAME" javaType="java.lang.String" jdbcType="VARCHAR2" />
+			<columnOverride column="PASSWORD" javaType="java.lang.String" jdbcType="VARCHAR2" />
+			<columnOverride column="BALANCE" javaType="java.lang.String" jdbcType="VARCHAR2" />
+			<columnOverride column="ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
+			<columnOverride column="TYPE_ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
 		</table>
-		-->
+		 <table tableName="COURSES" domainObjectName="Courses"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<columnOverride column="ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
+			<columnOverride column="NAME" javaType="java.lang.String" jdbcType="VARCHAR2" />
+			<columnOverride column="USER_ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
+		</table>
+		<table tableName="RECOURSE" domainObjectName="Recourse"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<columnOverride column="ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
+			<columnOverride column="USER_ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
+			<columnOverride column="COURSE_ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
+		</table>
+		<table tableName="PRESENT" domainObjectName="Present"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<columnOverride column="PRESENT_NAME" javaType="java.lang.String" jdbcType="VARCHAR2" />
+			<columnOverride column="ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
+			<columnOverride column="PRESENT_PRICE" javaType="java.lang.Integer" jdbcType="NUMBER" />
+		</table>
+		<table tableName="MONEY_RECORD" domainObjectName="MoneyRecord"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<columnOverride column="ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
+			<columnOverride column="USER_ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
+			<columnOverride column="MONEY" javaType="java.lang.Integer" jdbcType="NUMBER" />
+		</table>
+		<table tableName="PRESENT_RECORD" domainObjectName="PresentRecord"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+			<columnOverride column="ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
+			<columnOverride column="USER_ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
+			<columnOverride column="PRESENT_ID" javaType="java.lang.Integer" jdbcType="NUMBER" />
+			<columnOverride column="AMOUNT" javaType="java.lang.Integer" jdbcType="NUMBER" />
+		</table>
+		
 	</context>
 </generatorConfiguration>
