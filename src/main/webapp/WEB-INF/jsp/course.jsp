@@ -8,6 +8,7 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/muke.css">
+    <link rel="stylesheet" type="text/css" href="css/live.css">
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
@@ -20,10 +21,90 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="js/webSocket.js"></script>
     <script type='text/javascript' src='js/jwplayer.js'></script>
+    <script type="text/javascript">
+      $(function(){
+    	  
+    	   $("#send").click(function(){
+    	       send();
+    	     });
+    	   $("#text").keydown(function() {
+    	       var code = window.event.keyCode;
+    	       if (code == 13){//回车键按下时，输出到弹幕
+    	          send();
+    	        }
+    	     });
+    	   //init_screen();
+    	     });
+    	  
+      
+      function launch(){
+          var _height = $(window).height();
+          var _left = $(window).width() - $("#"+index).width();
+          var time=10000;
+          if(index%2==0)
+             time=20000;
+          _top+=80;
+          if(_top>_height-100)
+             _top=80;
+          $("#"+index).css({
+             left:_left,
+             top:_top,
+             color:getRandomColor()
+           });
+          $("#"+index).animate({
+             left:"-"+_left+"px"},
+             time,
+             function(){
+            	 $(this).remove();
+             });
+           index++;
+}
+
+
+
+/* //初始化弹幕
+function init_screen() {
+var _top = 0;
+var _height = $(window).height();
+$(".d_show").find("div").show().each(function() {
+var _left = $(window).width() - $(this).width();
+var time=10000;
+if($(this).index()%2==0)
+time=20000;
+_top+=80;
+if(_top>_height-100)
+_top=80;
+$(this).css({
+left:_left,
+top:_top,
+color:getRandomColor()
+
+});
+$(this).animate({
+left:"-"+_left+"px"},
+time,
+function(){});
+
+
+});
+} */
+
+//随机获取颜色值
+function getRandomColor() {
+return '#' + (function(h) {
+return new Array(7 - h.length).join("0") + h
+})((Math.random() * 0x1000000 << 0).toString(16))
+}
+    </script>
+     <style>
+       
+    </style>
 </head>
 
 <body class="backg_huibai">
+
 
 <!-- 顶部 -->
 <div class="width100 float_l height490 img_backg1">
@@ -64,17 +145,22 @@
         </div>
     </div>
     <!--聊天框-->
-    <div style="margin-left: 10%;margin-top:8%;position:absolute">
-
-    <div id='mediaspace2'>This text will be replaced</div>
+    <div style="margin-top:8%;position:absolute">
+       <div id='mediaspace2' class="play">
+       <div class="d_show">
+        </div>
+          <div id="tangmu">
+          </div>
+       </div>
     </div>
+    
+     
 
     <div style="right: 0;margin-top:8%;position:absolute;width: calc(90% - 1080px)">
-       <textarea style="height: 700px;width: 50%;margin-left:20px"></textarea><br>
-        <input style="height: 20px;width: 50%;margin-left:20px" type="text"/>
+       <textarea style="height: 700px;width: 80%;margin-left:20px;overflow-y:visible;outline:none ;resize:none" wrap="virtual" readonly="readonly"  id="msg"></textarea><br>
+        <input style="height: 30px;width: 80%;margin-left:20px" type="text" id="text"/>
+        <button style="height: 20px;width: 80%;margin-left:20px" id="send">发送</button>
     </div>
-
-
             <script type='text/javascript'>
                 jwplayer('mediaspace2').setup({
                     'flashplayer': 'player.swf',
@@ -85,10 +171,6 @@
                     'width':'1080'
                 });
             </script>
-
-
-
-
 </div>
 
 
