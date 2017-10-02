@@ -36,6 +36,14 @@ public class LiveController {
 	public String cc(){
 		return "cc";
 	}
+	@RequestMapping("livetwo")
+	public String livetwo(){
+		return "livetwo";
+	}
+	@RequestMapping("two")
+	public String two(){
+		return "two";
+	}
 	
 	
 

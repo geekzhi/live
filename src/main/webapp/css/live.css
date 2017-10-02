@@ -43,8 +43,10 @@ background: #669900;
 
 
 .dm {
-width: 100%;
-height: 100%;
+margin-top:10%;	
+margin-left:10%;	
+width: 1080px;
+height: 720px;
 position: absolute;
 top: 0;
 left: 0;
@@ -52,6 +54,8 @@ left: 0;
 
 
 .dm .d_screen .d_del {
+margin-top:10%;
+margin-left:10%;
 width: 38px;
 height: 38px;
 background: #600;
@@ -77,8 +81,10 @@ background: #F00;
 
 
 .dm .d_screen .d_mask {
-width: 100%;
-height: 100%;
+margin-top:10%;	
+margin-left:10%;	
+width: 1080px;
+height: 720px;
 background: #000;
 position: absolute;
 top: 0;
@@ -101,7 +107,7 @@ font-size: 26px;
 line-height: 36px;
 font-weight: 500;
 position: absolute;
-z-index: 10001;
+z-index: 10000;
 top: 76px;
 left: 10;
 color: #fff;
@@ -111,7 +117,7 @@ color: #fff;
 
 /*send start*/
 .send {
-width: 100%;
+width: 1080px;
 height: 76px;
 position: absolute;
 bottom: 0;
@@ -121,7 +127,7 @@ border: 1px solid red;
 
 
 .send .s_filter {
-width: 100%;
+width: 1080px;
 height: 76px;
 background: #000;
 position: absolute;
@@ -133,7 +139,7 @@ filter: alpha(opacity = 60);
 
 
 .send  .s_con {
-width: 100%;
+width: 1080px;
 height: 76px;
 position: absolute;
 top: 0;
