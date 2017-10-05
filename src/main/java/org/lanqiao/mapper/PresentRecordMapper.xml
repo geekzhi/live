@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.PresentRecordMapper">
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.PresentRecord">
+    <id column="ID" jdbcType="NUMBER" property="id" />
+    <result column="USER_ID" jdbcType="NUMBER" property="userId" />
+    <result column="TIME" jdbcType="TIMESTAMP" property="time" />
+    <result column="PRESENT_ID" jdbcType="NUMBER" property="presentId" />
+    <result column="AMOUNT" jdbcType="NUMBER" property="amount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, USER_ID, TIME, PRESENT_ID, AMOUNT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PRESENT_RECORD
+    where ID = #{id,jdbcType=NUMBER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from PRESENT_RECORD
+    where ID = #{id,jdbcType=NUMBER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.PresentRecord">
+    insert into PRESENT_RECORD (ID, USER_ID, TIME, 
+      PRESENT_ID, AMOUNT)
+    values (#{id,jdbcType=NUMBER}, #{userId,jdbcType=NUMBER}, #{time,jdbcType=TIMESTAMP}, 
+      #{presentId,jdbcType=NUMBER}, #{amount,jdbcType=NUMBER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.PresentRecord">
+    insert into PRESENT_RECORD
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="time != null">
+        TIME,
+      </if>
+      <if test="presentId != null">
+        PRESENT_ID,
+      </if>
+      <if test="amount != null">
+        AMOUNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=NUMBER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=NUMBER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="presentId != null">
+        #{presentId,jdbcType=NUMBER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=NUMBER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.PresentRecord">
+    update PRESENT_RECORD
+    <set>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=NUMBER},
+      </if>
+      <if test="time != null">
+        TIME = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="presentId != null">
+        PRESENT_ID = #{presentId,jdbcType=NUMBER},
+      </if>
+      <if test="amount != null">
+        AMOUNT = #{amount,jdbcType=NUMBER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=NUMBER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.PresentRecord">
+    update PRESENT_RECORD
+    set USER_ID = #{userId,jdbcType=NUMBER},
+      TIME = #{time,jdbcType=TIMESTAMP},
+      PRESENT_ID = #{presentId,jdbcType=NUMBER},
+      AMOUNT = #{amount,jdbcType=NUMBER}
+    where ID = #{id,jdbcType=NUMBER}
+  </update>
+</mapper>

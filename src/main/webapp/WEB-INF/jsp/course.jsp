@@ -24,6 +24,7 @@
     <script type="text/javascript" src="js/webSocket.js"></script>
     <script type='text/javascript' src='js/jwplayer.js'></script>
     <script type="text/javascript">
+
       $(function(){
     	  
     	   $("#send").click(function(){
@@ -101,6 +102,14 @@ return new Array(7 - h.length).join("0") + h
      <style>
        
     </style>
+
+       $(function(){
+    	   $("#send").click(function(){
+    		   $("#msg").prop("value")
+    	   });
+       })
+    </script>
+
 </head>
 
 <body class="backg_huibai">
@@ -157,9 +166,15 @@ return new Array(7 - h.length).join("0") + h
      
 
     <div style="right: 0;margin-top:8%;position:absolute;width: calc(90% - 1080px)">
+
        <textarea style="height: 700px;width: 80%;margin-left:20px;overflow-y:visible;outline:none ;resize:none" wrap="virtual" readonly="readonly"  id="msg"></textarea><br>
         <input style="height: 30px;width: 80%;margin-left:20px" type="text" id="text"/>
         <button style="height: 20px;width: 80%;margin-left:20px" id="send">发送</button>
+
+       <textarea style="height: 700px;width: 80%;margin-left:20px" id="says" ></textarea><br>
+        <input style="height: 30px;width: 80%;margin-left:20px" type="text" value="" id="msg"/><br>
+        <button style="height: 20px;width: 80%;margin-left:20px" value="发送" id="send"></button>
+
     </div>
             <script type='text/javascript'>
                 jwplayer('mediaspace2').setup({

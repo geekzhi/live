@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.MoneyRecordMapper">
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.MoneyRecord">
+    <id column="ID" jdbcType="NUMBER" property="id" />
+    <result column="USER_ID" jdbcType="NUMBER" property="userId" />
+    <result column="TIME" jdbcType="TIMESTAMP" property="time" />
+    <result column="MONEY" jdbcType="NUMBER" property="money" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, USER_ID, TIME, MONEY
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from MONEY_RECORD
+    where ID = #{id,jdbcType=NUMBER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from MONEY_RECORD
+    where ID = #{id,jdbcType=NUMBER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.MoneyRecord">
+    insert into MONEY_RECORD (ID, USER_ID, TIME, 
+      MONEY)
+    values (#{id,jdbcType=NUMBER}, #{userId,jdbcType=NUMBER}, #{time,jdbcType=TIMESTAMP}, 
+      #{money,jdbcType=NUMBER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.MoneyRecord">
+    insert into MONEY_RECORD
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="time != null">
+        TIME,
+      </if>
+      <if test="money != null">
+        MONEY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=NUMBER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=NUMBER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=NUMBER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.MoneyRecord">
+    update MONEY_RECORD
+    <set>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=NUMBER},
+      </if>
+      <if test="time != null">
+        TIME = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="money != null">
+        MONEY = #{money,jdbcType=NUMBER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=NUMBER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.MoneyRecord">
+    update MONEY_RECORD
+    set USER_ID = #{userId,jdbcType=NUMBER},
+      TIME = #{time,jdbcType=TIMESTAMP},
+      MONEY = #{money,jdbcType=NUMBER}
+    where ID = #{id,jdbcType=NUMBER}
+  </update>
+</mapper>
